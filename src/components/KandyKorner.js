@@ -32,12 +32,12 @@ class KandyKorner extends Component {
         { id: 6, name: "Abbey" }
     ]
     candiesArray = [
-        { id: 1, name: "Foil wrapped chocolate bar", type:1},
-        { id: 2, name: "Jelly beans", type:4},
-        { id: 3, name: "Jolly's Stick candy", type:5},
-        { id: 4, name: "Skittles", type:2},
-        { id: 5, name: "M&Ms", type:1},
-        { id: 6, name: "Dip Sticks", type:3}
+        { id: 1, name: "Foil wrapped chocolate bar", type: 1 },
+        { id: 2, name: "Jelly beans", type: 4 },
+        { id: 3, name: "Jolly's Stick candy", type: 5 },
+        { id: 4, name: "Skittles", type: 2 },
+        { id: 5, name: "M&Ms", type: 1 },
+        { id: 6, name: "Dip Sticks", type: 3 }
     ]
 
     state = {
@@ -51,10 +51,14 @@ class KandyKorner extends Component {
         return (
             <section className="kandy">
                 <StoreList stores={this.state.stores} />
-                <EmployeeList employees={this.state.employees} />
-                <CandyList candies={this.state.candies}
-                    candyTypes={this.state.candyTypes}
-                />
+                <article className="employee_box">
+                    <EmployeeList employees={this.state.employees} />
+                </article>
+                <article className="candy_box">
+                    <CandyList candies={this.state.candies}
+                        candyTypes={this.state.candyTypes}
+                    />
+                </article>
             </section>
         )
     }
