@@ -14,6 +14,15 @@ export default class ApplicationViews extends Component {
         candy: []
     }
 
+    deleteCandy = (id) => {
+        fetch(`http://localhost:5002/candiesArray/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => fetch("http://localhost:5002/candiesArray"))
+        .then(r => r.json())
+        .then(candy => this.setState({candy: candy}))
+    }
+
     componentDidMount() {
         const newState = {}
 
@@ -41,7 +50,8 @@ export default class ApplicationViews extends Component {
                 }} />
                 <Route path="/candy" render={() => {
                     return <CandyList candy={this.state.candy}
-                        candyTypes={this.state.candyTypes} />
+                        candyTypes={this.state.candyTypes}
+                        deleteCandy={this.deleteCandy} />
                 }} />
                 <Route path="/employees" render={() => {
                     return <EmployeeList employees={this.state.employees} />
