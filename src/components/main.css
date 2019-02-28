@@ -17,13 +17,18 @@ font-family: 'Coiny', cursive; */
     justify-content: space-around;
 }
 
+.item-name {
+    font-family: 'Roboto Mono', monospace;
+}
+
 #header_hr {
     border: 4px dashed #F2E89B;
     width: 100%;
 }
 
-.item-name {
-    font-family: 'Roboto Mono', monospace;
+.icon--candy {
+    width: 50px;
+    height: 50px;
 }
 
 header {
@@ -48,32 +53,5 @@ body {
 
 hr {
     border: 0.5px solid black;
-}
-
-.title {
-    font-family: cursive;
-    font-size: 60px;
-    animation: App-logo-spin infinite 2s linear, rainbow infinite 1s alternate;
-}
-
-@keyframes rainbow {
-    0%   {color: red;}
-    12%  {color: orange;}
-    25%  {color: yellow;}
-    37%  {color: green;}
-    50%  {color: turquoise;}
-    62%  {color: blue;}
-    75% {color: indigo;}
-    88% {color: violet;}
-    100% {color: pink;}
-  }
-
-@keyframes App-logo-spin {
-    from {
-      transform: rotate(0deg);
-    }
-    to {
-      transform: rotate(360deg);
-    }
 }
 
