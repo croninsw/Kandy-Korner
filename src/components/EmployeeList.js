@@ -16,6 +16,9 @@ export default class EmployeeList extends Component {
                         )
                     }
                 </section>
+
+                <input type="text" id="newEmployeeInput" placeholder="New Employee Name"></input>
+                <button id="newEmployeeButton">Add New Employee</button>
             </React.Fragment>
         )
     }

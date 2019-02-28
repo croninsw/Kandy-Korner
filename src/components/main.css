@@ -22,7 +22,9 @@ font-family: 'Coiny', cursive; */
     width: 100%;
 }
 
-
+.item-name {
+    font-family: 'Roboto Mono', monospace;
+}
 
 header {
     font-family: 'Coiny', cursive;
@@ -34,14 +36,44 @@ header {
     margin: -0.1em;;
     background-color: #0D1B1E;
     color: #F2E89B;
+
+
 }
 
 body {
+    padding-top: 45px;
     background-color: #839FAF;
     color: #0D1B1E;
 }
 
 hr {
     border: 0.5px solid black;
+}
+
+.title {
+    font-family: cursive;
+    font-size: 60px;
+    animation: App-logo-spin infinite 2s linear, rainbow infinite 1s alternate;
+}
+
+@keyframes rainbow {
+    0%   {color: red;}
+    12%  {color: orange;}
+    25%  {color: yellow;}
+    37%  {color: green;}
+    50%  {color: turquoise;}
+    62%  {color: blue;}
+    75% {color: indigo;}
+    88% {color: violet;}
+    100% {color: pink;}
+  }
+
+@keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
 }
 

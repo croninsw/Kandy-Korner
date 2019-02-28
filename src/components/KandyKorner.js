@@ -1,8 +1,8 @@
 import React, { Component } from "react"
-import StoreList from "./StoreList";
-import EmployeeList from "./EmployeeList";
-import CandyList from "./CandyList";
+
 import "./main.css"
+import NavBar from "./nav/NavBar";
+import ApplicationViews from "./ApplicationViews";
 
 
 class KandyKorner extends Component {
@@ -49,20 +49,12 @@ class KandyKorner extends Component {
 
     render() {
         return (
-            <section className="kandy">
-                <StoreList stores={this.state.stores} />
-                <article className="employee_box">
-                    <EmployeeList employees={this.state.employees} />
-                </article>
-                <article className="candy_box">
-                    <CandyList candies={this.state.candies}
-                        candyTypes={this.state.candyTypes}
-                    />
-                </article>
-            </section>
+            <React.Fragment>
+                <NavBar />
+                <ApplicationViews />
+            </React.Fragment>
         )
     }
 }
-
 
 export default KandyKorner
