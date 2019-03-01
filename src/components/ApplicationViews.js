@@ -3,6 +3,9 @@ import React, { Component } from "react"
 import EmployeeList from './EmployeeList'
 import CandyList from './CandyList';
 import StoreList from './StoreList';
+import KandyManager from "../modules/KandyManager"
+import EmployeeManager from "../modules/EmployeeManager"
+import StoreManager from "../modules/StoreManager"
 
 
 export default class ApplicationViews extends Component {
@@ -24,21 +27,25 @@ export default class ApplicationViews extends Component {
     }
 
     componentDidMount() {
-        const newState = {}
 
-        fetch("http://localhost:5002/locationsArray")
-            .then(r => r.json())
-            .then(stores => newState.stores = stores)
-            .then(() => fetch("http://localhost:5002/employeesArray")
-                .then(r => r.json()))
-            .then(employees => newState.employees = employees)
-            .then(() => fetch("http://localhost:5002/candiesArray")
-                .then(r => r.json()))
-            .then(candy => newState.candy = candy)
-            .then(() => fetch("http://localhost:5002/candyTypesArray")
-                .then(r => r.json()))
-            .then(candyTypes => newState.candyTypes = candyTypes)
-            .then(() => this.setState(newState))
+        StoreManager.getAll().then(AllLocations => {
+            this.setState({
+                stores: AllLocations
+            })
+        })
+        EmployeeManager.getAll().then(AllEmployees => {
+            this.setState({
+                employees: AllEmployees
+            })
+        })
+        KandyManager.getAll().then(AllKandy => {
+            this.setState({
+                candy: AllKandy
+            })
+        })
+        fetch("http://localhost:5002/candyTypesArray").then(r => r.json()).then(AllKandyTypes => {
+            this.setState({candyTypes: AllKandyTypes})
+        })
     }
 
 
