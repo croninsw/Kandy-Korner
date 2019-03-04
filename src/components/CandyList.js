@@ -5,6 +5,14 @@ export default class CandyList extends Component {
     render() {
         return (
             <section className="candy">
+                <button type="button"
+                    className="btn btn-success"
+                    onClick={() => {
+                        this.props.history.push("/candies/new")
+                    }
+                    }>
+                    Create New Candy
+                </button>
                 {
                     this.props.candy.map(candy =>
                         <Candy key={`candy-${candy.id}`}
@@ -16,7 +24,9 @@ export default class CandyList extends Component {
                                 ).name
                             }
                         />
+
                     )
+
                 }
             </section>
         )

@@ -6,6 +6,8 @@ import StoreList from './StoreList';
 import KandyManager from "../modules/KandyManager"
 import EmployeeManager from "../modules/EmployeeManager"
 import StoreManager from "../modules/StoreManager"
+import EmployeeForm from "./EmployeeForm"
+import CandyForm from './CandyForm';
 
 
 export default class ApplicationViews extends Component {
@@ -17,13 +19,52 @@ export default class ApplicationViews extends Component {
         candy: []
     }
 
+    addCandy = (candy) => {
+        return KandyManager.post(candy)
+            .then(() => KandyManager.getAll())
+            .then(candy =>
+                this.setState({
+                    candy: candy
+                }))
+    }
+
+    addEmployee = (employee) => {
+        return EmployeeManager.post(employee)
+            .then(() => EmployeeManager.getAll())
+            .then(employees =>
+                this.setState({
+                    employees: employees
+                }))
+    }
+
+    addLocation = (store) => {
+        return StoreManager.post(store)
+            .then(() => StoreManager.getAll())
+            .then(stores =>
+                this.setState({
+                    stores: stores
+                }))
+    }
+
     deleteCandy = (id) => {
-        fetch(`http://localhost:5002/candiesArray/${id}`, {
-            method: "DELETE"
-        })
-        .then(() => fetch("http://localhost:5002/candiesArray"))
-        .then(r => r.json())
-        .then(candy => this.setState({candy: candy}))
+        return KandyManager.delete(id)
+            .then(candy => this.setState({
+                candy: candy
+            }))
+    }
+
+    deleteEmployee = (id) => {
+        return EmployeeManager.delete(id)
+            .then(employee => this.setState({
+                employees: employee
+            }))
+    }
+
+    deleteLocation = (id) => {
+        return StoreManager.delete(id)
+            .then(store => this.setState({
+                stores: store
+            }))
     }
 
     componentDidMount() {
@@ -43,8 +84,8 @@ export default class ApplicationViews extends Component {
                 candy: AllKandy
             })
         })
-        fetch("http://localhost:5002/candyTypesArray").then(r => r.json()).then(AllKandyTypes => {
-            this.setState({candyTypes: AllKandyTypes})
+        fetch("http://localhost:5002/candyTypes").then(r => r.json()).then(AllKandyTypes => {
+            this.setState({ candyTypes: AllKandyTypes })
         })
     }
 
@@ -55,13 +96,21 @@ export default class ApplicationViews extends Component {
                 <Route exact path="/" render={() => {
                     return <StoreList stores={this.state.stores} />
                 }} />
-                <Route path="/candy" render={() => {
-                    return <CandyList candy={this.state.candy}
+                <Route path="/candies" render={(props) => {
+                    return <CandyList {...props} candy={this.state.candy}
                         candyTypes={this.state.candyTypes}
                         deleteCandy={this.deleteCandy} />
                 }} />
-                <Route path="/employees" render={() => {
-                    return <EmployeeList employees={this.state.employees} />
+                <Route path="/candies/new" render={(props) => {
+                    return <CandyForm {...props} candy={this.state.candy}
+                        candyTypes={this.state.candyTypes}
+                        addCandy={this.addCandy} />
+                }} />
+                <Route path="/employees" render={(props) => {
+                    return <EmployeeList {...props} employees={this.state.employees} deleteEmployee={this.deleteEmployee} />
+                }} />
+                <Route path="/employees/new" render={(props) => {
+                    return <EmployeeForm {...props} employees={this.state.employees} addEmployee={this.addEmployee} />
                 }} />
             </React.Fragment>
         )

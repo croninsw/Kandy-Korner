@@ -1,5 +1,5 @@
 {
-  "locationsArray": [
+  "locations": [
     {
       "id": 1,
       "name": "Krusty's Kandy Kastle",
@@ -31,7 +31,7 @@
       "address": "666 Devil Lane"
     }
   ],
-  "candyTypesArray": [
+  "candyTypes": [
     {
       "id": 1,
       "name": "Chocolate"
@@ -57,7 +57,7 @@
       "name": "Taffy"
     }
   ],
-  "employeesArray": [
+  "employees": [
     {
       "id": 1,
       "name": "Brian"
@@ -83,7 +83,7 @@
       "name": "Abbey"
     }
   ],
-  "candiesArray": [
+  "candies": [
     {
       "id": 4,
       "name": "Skittles",
